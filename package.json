@@ -1,0 +1,89 @@
+{
+  "name": "vite-plugin-test",
+  "version": "0.1.0",
+  "description": "",
+  "author": "",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build && node scripts/legacy.js && node scripts/lsr.js",
+    "upload": "node scripts/upload.js",
+    "offline": "node scripts/offline.js",
+    "preview": "vite preview --host",
+    "prepare": "npx husky install"
+  },
+  "dependencies": {
+    "@mf2e/js-bridge-helper": "^3.0.0",
+    "@mf2e/utils": "^3.0.0",
+    "better-scroll": "^2.4.2",
+    "postcss": "^8.4.4",
+    "vue": "^3.2.10",
+    "vue-router": "^4.0.11",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^14.1.0",
+    "@commitlint/config-conventional": "^14.1.0",
+    "@mf2e/lsr-tool": "^1.1.1",
+    "@mf2e/offline-tool": "^1.0.1",
+    "@mf2e/postcss-generate-theme": "^1.1.1",
+    "@newap/uploader": "^2.2.17",
+    "@vitejs/plugin-legacy": "^1.5.3",
+    "@vitejs/plugin-vue": "^1.9.3",
+    "@vue/compiler-sfc": "^3.2.20",
+    "chalk": "^4.1.2",
+    "connect-api-mocker": "^1.10.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^7.17.0",
+    "fs-extra": "^10.0.0",
+    "html-minifier": "^4.0.0",
+    "husky": "^7.0.4",
+    "inquirer": "^8.1.2",
+    "lint-staged": "^11.1.6",
+    "minimist": "^1.2.5",
+    "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.3.2",
+    "sass": "^1.39.0",
+    "vite": "^2.6.10",
+    "vite-plugin-inspect": "^0.3.11"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "Android >= 5",
+    "iOS >= 10"
+  ],
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,vue}": "eslint --fix"
+  },
+  "mf2e-cli": {
+    "lib": "vue",
+    "plugins": [
+      "base",
+      "lint",
+      "inject",
+      "mock",
+      "components",
+      "directives",
+      "router",
+      "store",
+      "legacy",
+      "adapter",
+      "theme",
+      "antnest",
+      "sentry",
+      "sass",
+      "scaffold",
+      "fetch",
+      "husky",
+      "lsr",
+      "upload",
+      "offline",
+      "utils"
+    ]
+  },
+  "cdn": "https://wp.m.163.com/163/static/newsapp/vite-plugin-test/",
+  "homepage": "https://wp.m.163.com/163/html/newsapp/vite-plugin-test/index.html"
+}

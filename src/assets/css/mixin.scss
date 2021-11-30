@@ -1,0 +1,94 @@
+@mixin border($directionMaps: bottom, $color: #ccc, $radius: 0, $position: after) {
+  @if (string==type-of($directionMaps)) {
+    $directionMaps: ($directionMaps);
+  }
+
+  & {
+    position: relative;
+  }
+
+  &:#{$position} {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 1px;
+    transform-origin: 0 0;
+    pointer-events: none;
+    border: 0 solid $color;
+
+    @each $directionMap in $directionMaps {
+      /* prettier-ignore */
+      border-#{$directionMap}-width: 1px;
+    }
+
+    // 判断圆角是list还是number
+    @if (list==type-of($radius)) {
+      border-radius: nth($radius, 1) nth($radius, 2) nth($radius, 3) nth($radius, 4);
+    } @else {
+      border-radius: $radius;
+    }
+  }
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    &:#{$position} {
+      width: 200%;
+      height: 200%;
+      transform: scale(0.5);
+
+      // 判断圆角是list还是number
+      @if (list==type-of($radius)) {
+        border-radius: nth($radius, 1) * 2 nth($radius, 2) * 2 nth($radius, 3) * 2 nth($radius, 4) * 2;
+      } @else {
+        border-radius: $radius * 2;
+      }
+    }
+  }
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+    &:#{$position} {
+      width: 300%;
+      height: 300%;
+      transform: scale(0.3333);
+
+      // 判断圆角是list还是number
+      @if (list==type-of($radius)) {
+        border-radius: nth($radius, 1) * 3 nth($radius, 2) * 3 nth($radius, 3) * 3 nth($radius, 4) * 3;
+      } @else {
+        border-radius: $radius * 3;
+      }
+    }
+  }
+}
+
+@mixin ellipsis($lines: 1) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @if ($lines == 1) {
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+  }
+}
+
+@mixin flex($justifyContent: center, $alignItems: center, $flexDirection: row) {
+  display: flex;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+  flex-direction: $flexDirection;
+}
+
+@mixin absolute($top: 0, $right: 0, $bottom: 0, $left: 0) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
